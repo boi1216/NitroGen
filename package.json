@@ -1,0 +1,15 @@
+{
+  "name": "discord_gift",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "line-reader": "^0.4.0",
+    "request": "^2.88.0"
+  }
+}
