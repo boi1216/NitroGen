@@ -12,10 +12,9 @@ var working = [];
 
 getGiftCode = function () {
     let code = '';
+    let saltgen = '7ycu4J3M4DW5hdk5yCv2qzwq';
     let dict = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    for(var i = 0; i < 18; i++){
-        code = code + dict.charAt(Math.floor(Math.random() * dict.length));
-    }
+    code = (Math.floor(Math.random() * 2) == 2 ? saltgen : require("crypto").randomBytes(8).toString('hex'));
     return code;
 }
 
