@@ -9,12 +9,15 @@ const triesPerSecond = 0.5;
 var proxyLine = 0;
 var proxyUrl = "";
 var working = [];
+var tested = [];
 
 getGiftCode = function () {
     let code = '';
-    let dict = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    for(var i = 0; i < 18; i++){
-        code = code + dict.charAt(Math.floor(Math.random() * dict.length));
+    while(!code || tested.includes(code)){
+        let dict = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        for (var i = 0; i < 18; i++){
+            code = code + dict.charAt(Math.floor(Math.random() * dict.length));
+        }
     }
     return code;
 }
@@ -51,6 +54,7 @@ checkCode =  function (code) {
                 logger.log('\x1b[41m', `FOUND CODE THAT WORKS: https://discord.gift/${code}`);
                 console.log(JSON.stringify(body, null, 4));
                 working.push(`https://discord.gift/${code}`);
+                tested.push(code);
                 fs.writeFileSync(__dirname + '/codes.json', JSON.stringify(working, null, 4));
             }
             else if(body.message === "You are being rate limited.") {
@@ -58,6 +62,7 @@ checkCode =  function (code) {
                 console.log("Rate limit reached! Switched proxy");
 
             }else{
+                tested.push(code);
                 console.log('\x1b[36m%s\x1b[0m', `Invalid: ${code} : Searching!`);
             }
         }
