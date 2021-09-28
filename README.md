@@ -1,8 +1,6 @@
 # NitroGen
 NodeJS Discord nitro generator 
 
-# As you may have noticed this tool is very slow and it takes long time to get a nitro code. I recommend using Nitro sniper instead. Contact me to buy: Discord boi#1485
-
 ![Picture](https://snag.gy/ixNDgK.jpg)
 
 # How to use
